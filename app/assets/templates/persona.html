@@ -1,6 +1,6 @@
 <div id="person-show-page">
 
-  <h2>Ficha de {{ personCtrl.person.name }} {{ personCtrl.person.surname }}</h2>
+  <h2>Expediente {{ personCtrl.person.exp }}</h2>
 
   <div class="row fondo_menu_persona">
     <div class="col-md-12 col-xs-12 ">
@@ -60,8 +60,16 @@
           <strong class="person__list__text__left">Servicios sociales:</strong> <span id="person_social_services">{{ personCtrl.si_o_no(personCtrl.person.social_services) }}</span>
         </li>
 
+        <li class="list-group-item person__list__el" ng-if="personCtrl.person.social_services === 1">
+          <strong class="person__list__text__left">Zona de trabajo social:</strong> <span id="person_zts">{{ personCtrl.person.zts }}</span>
+        </li>
+
         <li class="list-group-item person__list__el">
           <strong class="person__list__text__left">Notas:</strong> <span id="person_notes">{{ personCtrl.person.notes }}</span>
+        </li>
+
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Fecha de alta:</strong> <span id="person_entry">{{ personCtrl.person.entry | date: "dd/MM/yyyy" }}</span>
         </li>
       </ul>
     </div>
@@ -83,7 +91,7 @@
         </li>
 
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Tipo de menú:</strong> <span id="person_menu">{{ personCtrl.person.menu}}</span>
+          <strong class="person__list__text__left">Alergias:</strong> <span id="person_menu">{{ personCtrl.person.menu}}</span>
         </li>
 
         <li class="list-group-item person__list__el">
@@ -116,6 +124,10 @@
 
         <li class="list-group-item person__list__el">
           <strong class="person__list__text__left">Alta por:</strong> <span id="family_nif">{{ personCtrl.person.created_by.name }}</span>
+        </li>
+
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Fecha de baja:</strong> <span id="person_output">{{ personCtrl.person.output | date: "dd/MM/yyyy" }}</span>
         </li>
       </ul>
     </div>

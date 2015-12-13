@@ -40,15 +40,18 @@
         <input ng-model="personCtrl.personForm.phone" type="text" class="form-control" id="InputPhone">
       </div>
       <div class="form-group col-md-6">
-        <label for="InputMenu">Tipo de Menú</label>
+        <label for="InputMenu">Alergias</label>
         <input ng-model="personCtrl.personForm.menu" type="text" class="form-control" id="InputMenu">
       </div>
+
       <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.origin }">
         <label for="InputOrigin">Origen</label>
-        <input ng-model="personCtrl.personForm.origin" type="text" class="form-control" id="InputOrigin">
+        <select ng-model="personCtrl.personForm.origin" type="text" class="form-control" id="InputOrigin" data-placement="top">
+        <option ng-repeat="country in personCtrl.countries">{{country}}</option>
+        </select>
       </div>
 
-      <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.city }">
+      <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.city }" ng-if="personCtrl.personForm.origin === 'España'">
         <label for="InputCity">Provincia (España)</label>
         <select ng-model="personCtrl.personForm.city" ng-change="personCtrl.change('City')" type="text" class="form-control" id="InputCity" data-placement="top">
           <option value='Alava'>Álava</option>
@@ -186,9 +189,43 @@
         </select>
       </div>
 
+      <div class="form-group col-md-6"
+        ng-class="{ 'has-error':personCtrl.errors.zts }"
+        ng-if="personCtrl.personForm.social_services === '1' || personCtrl.personForm.social_services === 1">
+        <label for="InputZts">Zona de Trabajo Social</label>
+        <select
+          ng-model="personCtrl.personForm.zts"
+          type="text"
+          class="form-control"
+          id="InputZts"
+          data-placement="top">
+        <option ng-repeat="zts in personCtrl.zonas">{{zts}}</option>
+        </select>
+      </div>
+
       <div class="form-group col-md-12">
         <label for="InputNotes">Notas</label>
         <textarea ng-model="personCtrl.personForm.notes" class="form-control" rows="2" id="InputNotes"></textarea>
+      </div>
+
+      <div class="form-group col-md-6" >
+        <label for="InputEntry">Fecha de Alta</label>
+        <div class="input-group datepicker">
+          <span class="input-group-addon listpeople__azul">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+          <input ng-model="personCtrl.personForm.entry" type="text" class="form-control" id="InputEntry">
+        </div>
+      </div>
+
+      <div class="form-group col-md-6" >
+        <label for="InputOutput">Fecha de Baja</label>
+        <div class="input-group datepicker">
+          <span class="input-group-addon listpeople__azul">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+          <input ng-model="personCtrl.personForm.output" type="text" class="form-control" id="InputOutput">
+        </div>
       </div>
 
       <div class="submit-group col-md-4 col-md-offset-8">

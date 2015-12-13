@@ -5,27 +5,34 @@ RSpec.describe Person, type: :model do
   end
 
   context "Fields" do
-    it { is_expected.to have_field(:name).of_type(String) }
-    it { is_expected.to have_field(:surname).of_type(String) }
-    it { is_expected.to have_field(:origin).of_type(String) }
-    it { is_expected.to have_field(:genre).of_type(Symbol) }
-    it { is_expected.to have_field(:phone).of_type(String) }
-    it { is_expected.to have_field(:assistance).of_type(Integer) }
-    it { is_expected.to have_field(:family_status).of_type(String) }
-    it { is_expected.to have_field(:health_status).of_type(String) }
-    it { is_expected.to have_field(:city).of_type(String) }
-    it { is_expected.to have_field(:birth).of_type(Date) }
-    it { is_expected.to have_field(:nif).of_type(String) }
-    it { is_expected.to have_field(:social_services).of_type(Integer) }
-    it { is_expected.to have_field(:menu).of_type(String) }
-    it { is_expected.to have_field(:income).of_type(String) }
-    it { is_expected.to have_field(:address).of_type(String) }
-    it { is_expected.to have_field(:contact_family).of_type(String) }
-    it { is_expected.to have_field(:notes).of_type(String) }
-    it { is_expected.to have_field(:documentation).of_type(Integer) }
-    it { is_expected.to have_field(:address_type).of_type(Integer) }
-    it { is_expected.to have_field(:residence).of_type(Integer) }
-    it { is_expected.to have_field(:have_income).of_type(Integer) }
+    it { is_expected.to have_field( :name           ).of_type(String) }
+    it { is_expected.to have_field( :surname        ).of_type(String) }
+    it { is_expected.to have_field( :origin         ).of_type(String) }
+    it { is_expected.to have_field( :phone          ).of_type(String) }
+    it { is_expected.to have_field( :family_status  ).of_type(String) }
+    it { is_expected.to have_field( :health_status  ).of_type(String) }
+    it { is_expected.to have_field( :city           ).of_type(String) }
+    it { is_expected.to have_field( :nif            ).of_type(String) }
+    it { is_expected.to have_field( :menu           ).of_type(String) }
+    it { is_expected.to have_field( :income         ).of_type(String) }
+    it { is_expected.to have_field( :address        ).of_type(String) }
+    it { is_expected.to have_field( :contact_family ).of_type(String) }
+    it { is_expected.to have_field( :notes          ).of_type(String) }
+    it { is_expected.to have_field( :exp            ).of_type(String) }
+    it { is_expected.to have_field( :zts            ).of_type(String) }
+
+    it { is_expected.to have_field( :assistance      ).of_type(Integer) }
+    it { is_expected.to have_field( :social_services ).of_type(Integer) }
+    it { is_expected.to have_field( :documentation   ).of_type(Integer) }
+    it { is_expected.to have_field( :address_type    ).of_type(Integer) }
+    it { is_expected.to have_field( :residence       ).of_type(Integer) }
+    it { is_expected.to have_field( :have_income     ).of_type(Integer) }
+
+    it { is_expected.to have_field( :birth  ).of_type(Date) }
+    it { is_expected.to have_field( :entry  ).of_type(Date) }
+    it { is_expected.to have_field( :output ).of_type(Date) }
+
+    it { is_expected.to have_field( :genre  ).of_type(Symbol) }
   end
 
   context "Relations" do
@@ -39,6 +46,7 @@ RSpec.describe Person, type: :model do
   context "Validations" do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:surname) }
+    it { is_expected.to validate_presence_of(:origin) }
     it { is_expected.to validate_inclusion_of(:genre).to_allow([:man, :woman]) }
   end
 
